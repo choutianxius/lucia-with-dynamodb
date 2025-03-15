@@ -18,10 +18,12 @@
     "url": "https://github.com/choutianxius/lucia-with-dynamodb/issues"
   },
   "homepage": "https://github.com/choutianxius/lucia-with-dynamodb#readme",
-  "workspaces": ["apps/*"],
+  "workspaces": [
+    "apps/*"
+  ],
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.758.0",
-    "@aws-sdk/util-dynamodb": "^3.758.0"
+    "@aws-sdk/client-dynamodb": "^3.767.0",
+    "@aws-sdk/util-dynamodb": "^3.767.0"
   },
   "devDependencies": {
     "@types/node": "^22.13.10",

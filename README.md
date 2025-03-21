@@ -9,10 +9,10 @@ From v4, [Lucia Auth] has transformed from a library into a learning source on i
 
 Since we need to query a user by user ID, query all sessions by user ID, and query a session by session ID, a GSI is required. The following table schema is used for all applications in this repository:
 
-| *(Item Type)* | PK             | SK                   | GSIPK                | GSISK                | ExpiresAt (*TTL*) |
+| _(Item Type)_ | PK             | SK                   | GSIPK                | GSISK                | ExpiresAt (_TTL_) |
 | ------------- | -------------- | -------------------- | -------------------- | -------------------- | ----------------- |
-| *User*        | USER#[User ID] | USER#[User ID]       | *(Not used)*         | *(Not used)*         | *(Not specified)* |
-| *Session*     | USER#[User ID] | SESSION#[Session ID] | SESSION#[Session ID] | SESSION#[Session ID] | [Unix Epoch Time] |
+| _User_        | USER#[User ID] | USER#[User ID]       | _(Not used)_         | _(Not used)_         | _(Not specified)_ |
+| _Session_     | USER#[User ID] | SESSION#[Session ID] | SESSION#[Session ID] | SESSION#[Session ID] | [Unix Epoch Time] |
 
 > [!NOTE]
 > DynamoDB grants the flexibility to incorporate additional fields with the table schema above.
@@ -22,8 +22,8 @@ Here is an example of creating such a table with [`@aws-sdk/client-dynamodb`](ht
 ```typescript
 const client = new DynamoDBClient({});
 
-await client
-  .send(new CreateTableCommand({
+await client.send(
+  new CreateTableCommand({
     TableName: tableName,
     AttributeDefinitions: [
       { AttributeName: "PK", AttributeType: "S" },
@@ -53,16 +53,17 @@ await client
       ReadCapacityUnits: 5,
       WriteCapacityUnits: 5,
     },
-  }));
+  }),
+);
 
 // enable TTL
-await client
-  .send(new UpdateTimeToLiveCommand({
+await client.send(
+  new UpdateTimeToLiveCommand({
     TableName: tableName,
     TimeToLiveSpecification: {
       Enabled: true,
       AttributeName: "ExpiresAt",
     },
-  }));
+  }),
+);
 ```
-

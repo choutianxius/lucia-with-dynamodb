@@ -22,11 +22,11 @@
     "apps/*"
   ],
   "dependencies": {
-    "@aws-sdk/client-dynamodb": "^3.767.0",
-    "@aws-sdk/util-dynamodb": "^3.767.0"
+    "@aws-sdk/client-dynamodb": "^3.772.0",
+    "@aws-sdk/util-dynamodb": "^3.772.0"
   },
   "devDependencies": {
-    "@types/node": "^22.13.10",
+    "@types/node": "^22.13.11",
     "prettier": "^3.5.3",
     "typescript": "^5.8.2"
   },
